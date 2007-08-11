@@ -1,7 +1,5 @@
 %define version	3.1.1
-%define release	%mkrel 6
-
-%define scim_version	1.4.0
+%define release	%mkrel 7
 
 %define libname_orig lib%{name}
 %define libname %mklibname %{name} 0
@@ -15,10 +13,10 @@ License:		GPL
 URL:			http://www.magiclinux.org/people/sunmoon1997/stuff/fcim/
 Source0:		%{name}-%{version}.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:			%{libname} = %{version}
+Requires:			%{libname} = %{version}-%{release}
 Requires:			scim >= %{scim_version}
-BuildRequires:		scim-devel >= %{scim_version}
-BuildRequires:		automake1.8, libltdl-devel
+BuildRequires:		scim-devel >= 1.4.7-3mdk
+BuildRequires:		automake, libltdl-devel
 
 %description
 Scim-fcitx is an SCIM IMEngine module for fcitx.
@@ -36,7 +34,7 @@ scim-fcitx library.
 
 %prep
 %setup -q
-cp /usr/share/automake-1.9/mkinstalldirs .
+cp /usr/share/automake-1.10/mkinstalldirs .
 
 %build
 [[ ! -x configure ]] && ./bootstrap
@@ -48,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 # remove unnecessary files
-rm -f %{buildroot}/%{_libdir}/scim-1.0/*/*.{a,la}
+rm -f %{buildroot}/%{scim_plugins_dir}/*/*.{a,la}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -66,6 +64,4 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc COPYING
-%{_libdir}/scim-1.0/IMEngine/*.so
-
-
+%{scim_plugins_dir}/IMEngine/*.so
