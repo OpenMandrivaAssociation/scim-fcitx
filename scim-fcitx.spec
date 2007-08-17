@@ -60,8 +60,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog README
-%{_datadir}/scim/fcitx/*
-%{_datadir}/scim/icons/*
+%{_datadir}/scim/fcitx
+%{_datadir}/scim/icons/fcitx
 
 %files -n %{libname}
 %defattr(-,root,root)
