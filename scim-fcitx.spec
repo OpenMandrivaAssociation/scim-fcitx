@@ -15,7 +15,7 @@ Source0:		%{name}-%{version}.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:			%{libname} = %{version}-%{release}
 Requires:			scim >= %{scim_version}
-BuildRequires:		scim-devel >= 1.4.7-3mdk
+BuildRequires:		scim-devel >= 1.4.7-4mdk
 BuildRequires:		automake, libltdl-devel
 
 %description
@@ -33,13 +33,12 @@ scim-fcitx library.
 
 
 %prep
-%setup -q
-cp /usr/share/automake-1.10/mkinstalldirs .
+%setup -q -n fcitx
 
 %build
-[[ ! -x configure ]] && ./bootstrap
+./bootstrap
 %configure2_5x
-%make
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -47,6 +46,9 @@ rm -rf $RPM_BUILD_ROOT
 
 # remove unnecessary files
 rm -f %{buildroot}/%{scim_plugins_dir}/*/*.{a,la}
+
+# we don't need to pack up the binary tools
+rm -f %{buildroot}%{_bindir}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
