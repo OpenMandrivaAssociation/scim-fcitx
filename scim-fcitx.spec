@@ -12,7 +12,6 @@ Group:		System/Internationalization
 License:		GPL
 URL:			http://www.magiclinux.org/people/sunmoon1997/stuff/fcim/
 Source0:		%{name}-%{version}.tar.bz2
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:			%{libname} = %{version}-%{release}
 Requires:			scim >= %{scim_version}
 BuildRequires:		scim-devel >= 1.4.7-4mdk
