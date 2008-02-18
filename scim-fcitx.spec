@@ -5,7 +5,7 @@
 %define libname %mklibname %{name} 0
 
 Name:		scim-fcitx
-Summary:	Scim-fcitx is an SCIM IMEngine module for fcitx
+Summary:	SCIM IMEngine module for fcitx
 Version:		%{version}
 Release:		%{release}
 Group:		System/Internationalization
