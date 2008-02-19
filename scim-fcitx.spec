@@ -14,7 +14,7 @@ URL:			http://www.magiclinux.org/people/sunmoon1997/stuff/fcim/
 Source0:		%{name}-%{version}.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:			%{libname} = %{version}-%{release}
-Requires:			scim >= %{scim_version}
+Requires:			scim >= 1.4.0
 BuildRequires:		scim-devel >= 1.4.7-4mdk
 BuildRequires:		automake, libltdl-devel
 
