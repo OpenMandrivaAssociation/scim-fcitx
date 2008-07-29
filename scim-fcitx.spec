@@ -1,9 +1,6 @@
 %define version	3.1.1
 %define release	%mkrel 10
 
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
-
 Name:		scim-fcitx
 Summary:	SCIM IMEngine module for fcitx
 Version:		%{version}
@@ -12,28 +9,20 @@ Group:		System/Internationalization
 License:		GPL
 URL:			http://www.magiclinux.org/people/sunmoon1997/stuff/fcim/
 Source0:		%{name}-%{version}.tar.bz2
+Patch0:		scim-fcitx-3.1.1-gcc4.3.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:			%{libname} = %{version}-%{release}
 Requires:			scim >= 1.4.0
 BuildRequires:		scim-devel >= 1.4.7-4mdk
 BuildRequires:		automake, libltdl-devel
+Obsoletes:	%mklibname scim-fcitx 0
 
 %description
 Scim-fcitx is an SCIM IMEngine module for fcitx.
 It supports Chinese input.
 
-
-%package -n %{libname}
-Summary:	Scim-fcitx library
-Group:		System/Internationalization
-Provides:		%{libname_orig} = %{version}-%{release}
-
-%description -n %{libname}
-scim-fcitx library.
-
-
 %prep
 %setup -q -n fcitx
+%patch0 -p0
 
 %build
 ./bootstrap
@@ -66,8 +55,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README
 %{_datadir}/scim/fcitx
 %{_datadir}/scim/icons/fcitx
-
-%files -n %{libname}
-%defattr(-,root,root)
-%doc COPYING
 %{scim_plugins_dir}/IMEngine/*.so
