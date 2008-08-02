@@ -1,5 +1,5 @@
 %define version	3.1.1
-%define release	%mkrel 10
+%define release	%mkrel 11
 
 Name:		scim-fcitx
 Summary:	SCIM IMEngine module for fcitx
