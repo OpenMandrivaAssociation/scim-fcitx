@@ -10,6 +10,8 @@ License:		GPL
 URL:			http://www.magiclinux.org/people/sunmoon1997/stuff/fcim/
 Source0:		%{name}-%{version}.tar.bz2
 Patch0:		scim-fcitx-3.1.1-gcc4.3.patch
+Patch1:		scim-fcitx-3.1.1-libtool-flags.patch
+Patch2:		scim-fcitx-3.1.1-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:			scim >= 1.4.0
 BuildRequires:		scim-devel >= 1.4.7-4mdk
@@ -23,10 +25,12 @@ It supports Chinese input.
 %prep
 %setup -q -n fcitx
 %patch0 -p0
+%patch1 -p0
+%patch2 -p0
 
 %build
 ./bootstrap
-%configure2_5x
+%configure2_5x --disable-ltdl-install
 make
 
 %install
@@ -41,14 +45,6 @@ rm -f %{buildroot}%{_bindir}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
 
 %files
 %defattr(-,root,root)
