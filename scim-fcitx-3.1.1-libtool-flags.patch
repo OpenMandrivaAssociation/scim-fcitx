@@ -1,0 +1,10 @@
+--- configure.ac~	2005-05-08 17:54:59.000000000 +0200
++++ configure.ac	2009-01-31 14:50:16.000000000 +0100
+@@ -51,6 +51,7 @@
+ # libtool option to control which symbols are exported
+ # right now, symbols starting with _ are not exported
+ LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^[[^_]].*"'
++AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
+ 
+ # Extra args.
+ AC_ARG_ENABLE(debug,
