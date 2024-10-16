@@ -7,7 +7,7 @@ Version:		%{version}
 Release:		%{release}
 Group:		System/Internationalization
 License:		GPL
-URL:			http://www.magiclinux.org/people/sunmoon1997/stuff/fcim/
+URL:			https://www.magiclinux.org/people/sunmoon1997/stuff/fcim/
 Source0:		%{name}-%{version}.tar.bz2
 Patch0:		scim-fcitx-3.1.1-gcc4.3.patch
 Patch1:		scim-fcitx-3.1.1-libtool-flags.patch
