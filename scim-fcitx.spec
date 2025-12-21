@@ -14,6 +14,9 @@ Patch1:		scim-fcitx-3.1.1-libtool-flags.patch
 Patch2:		scim-fcitx-3.1.1-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:			scim >= 1.4.0
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:		scim-devel >= 1.4.7-4mdk
 BuildRequires:		automake, libltdl-devel
 Obsoletes:	%mklibname scim-fcitx 0
